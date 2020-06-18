@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Engenharia de Software</title>
+		<link rel="stylesheet" href="../layout/css/docentes.css">
+		<link rel="icon" type="image/png" href="../layout/img/index/unaerp_icon.png"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+		<style type="text/css">
+			@media (max-width: 780px) {
+				header {
+					background-image: linear-gradient(to right, rgb(44,62,80), rgb(44, 62, 80));
+					width: 100%;
+					height: 365px;
+				}
+				header #logotipo {
+					display: none;
+				}
+				header #logotipo-unaerp {
+					margin-left: 0;
+				}
+				header .cano-header-left {
+					display: none;
+				}
+				.row {
+					justify-content: left;
+					align-items: left;
+				}
+				.container {
+					flex-direction: row;
+					justify-content: left;
+					align-items: left;
+				}
+				#menu ul {
+					width: 100%;
+					margin: 0;
+					position: relative;
+					flex-direction: row;
+					align-content: center;
+					justify-content: center;
+					float: left;
+				}
+				#menu li {
+					margin: 0;
+					background-image: linear-gradient(to right, rgb(44,62,80), lightblue);
+					flex-direction: row;
+					align-content: center;
+					justify-content: center;
+					display: block;
+					opacity: 0.9;
+				}
+				#menu li a {
+					display: -webkit-flex;
+					display: flex;
+					-webkit-flex-wrap: wrap;
+					flex-wrap: wrap;
+					-webkit-align-content: center;
+					align-content: center;
+					font-size: 15px;
+				}
+				/* Standard syntax */
+				@keyframes ani_header {
+					from {/*background-color:red;*/ left:0%;}
+					to {/*background-color:red;*/ left:81%;}
+				}
+				#column-left {
+					background-image: linear-gradient(to left, lightblue, rgb(44, 62, 80));
+				}
+				.column.side, .column.middle {
+					box-shadow: 0 0 0;
+					width: 100%;
+				}
+				.img-container-div {
+					width: 75%;
+					opacity: 1;
+				}
+				.img-container-div:hover {
+					width: 80%;
+				}
+				#column-middle h3 {
+					font-size: 19px;
+				}
+				#column-middle p {
+					font-size: 12px;
+				}
+				.sub {
+					font-size: 7px;
+				}
+				.title {
+					font-size: 25px;
+				}
+				.subtitle {
+					font-size: 20px;
+				}
+				.div-table-oculta {
+					width: 60%;
+				}
+				#dirigentes-list ul li p {
+				}
+				.tooltiptext {
+					display: none;
+				}
+				ul li p {
+					display: -webkit-flex;
+					display: flex;
+					-webkit-flex-wrap: wrap;
+					flex-wrap: wrap;
+					-webkit-align-content: center;
+					align-content: center;
+				}
+				footer {
+					width: 50%;
+				}
+				footer .row {
+					width: 100%;
+				}
+				footer p {
+					font-size: 8px;
+				}
+				footer .logotipo-left, footer .logotipo-middle {
+					width: 25%;
+					margin: 0;
+				}
+				footer .logotipo-right {
+					width: 30%;
+					margin: 0;
+				}
+				footer .logotipo-left {
+					margin-left: 0;
+				}
+				footer .img-footer-list-mini {
+					width: 20%;
+				}
+				footer .img-footer-list-medium {
+					width: 18%;
+				}
+				footer .img-footer-list-big {
+					width: 15%;
+				}
+				footer .img-footer-list-mini {
+					margin-right: 4%;
+					width: 24%;
+				}
+				footer .img-footer-list-medium {
+					width: 21%;
+				}
+				footer .img-footer-list-big {
+					margin-right: 4%;
+					width: 16%;
+				}
+			}
+			#column-middle ul {
+				width: 90%;
+			}
+			.tooltip {
+				position: relative;
+			}
+			.tooltip .tooltiptext {
+				visibility: hidden;
+				width: 120px;
+				background-color: #363636;
+				color: #FFF;
+				text-align: center;
+				border-radius: 6px;
+				padding: 5px 0;
+
+				/* Position the tooltip */
+				position: absolute;
+				z-index: 1;
+				top: 100%;
+				left: 50%;
+				margin-left: -60px;
+			}
+			.tooltip:hover .tooltiptext {
+				visibility: visible;
+			}
+			#table-docents {
+				border-collapse: collapse;
+				width: 100%;
+			}
+			#table-docentes td, #table-docentes th {
+				border: 1px solid #ddd;
+				padding: 12px;
+			}
+			#table-docentes tr:nth-child(even){background-color: #f2f2f2;}
+
+			#table-docentes tr:hover {background-color: #A0CAD8;}
+
+			#table-docentes th {
+				padding-top: 12px;
+				padding-bottom: 12px;
+				text-align: left;
+				background-color: #341933;
+				color: white;
+			}
+			#dirigentes-list ul {
+				border-radius: 7px;
+				list-style-type: none;
+				background: #6A6A6A;
+				padding: 7px;
+			}
+			#dirigentes-list ul li {
+				padding: 4px;
+			}
+			#dirigentes-list ul li p {
+				color: #000;
+			}
+			#dirigentes-list ul li .sub {
+				background-image: linear-gradient(to right, darkgray, lightgray);
+				font-size: 26px;
+				color: #363636;
+			}
+			#dirigentes-list ul li p {
+				font-weight: bold;
+			}
+			#dirigentes-list h3 {
+				border-radius: 7px;
+				background-image: linear-gradient(to right, gray, lightgray);
+				font-weight: bold;
+			}
+			.reitora {
+				border-radius: 7px;
+				padding: 7px;
+				color: white;
+				text-align: center;
+				font-family: sans-serif;
+				opacity: 0.8;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header>
+			<div class="container">
+				<a href="https://www.unaerp.br/" target="_blank"><img id="logotipo-unaerp" src="../layout/img/index/unaerp_logo.png" alt="Logotipo"/></a>
+				<a href="index.html"><img id="logotipo" src="../layout/img/index/eng_software_logo.png" alt="Logotipo"/></a>
+				<!--<img id="carrinho" src="../layout/img/eng_software_logo.png" alt="Logotipo">
+				<img id="user" src="../layout/img/eng_software_logo.png" alt="Logotipo">-->
+			</div>
+
+			<div class="header-black"><span id="animation-header"><img src="../layout/img/index/gif/link_run.gif"/></span><img class="img-header" src="../layout/img/index/zelda_twilight.png"/></div>
+			
+			<div class="container">
+				<div class="row" align="center">
+					<nav id="menu">
+						<ul>
+							<li role="menuitem" aria-describedby="descricao-menu-inicio"><a href="index.html" class="tooltip">INICIO<span id="descricao-menu-inicio" class="tooltiptext">Ir para o index</span></a></li>
+							<li role="menuitem" aria-describedby="descricao-menu-sobre"><a href="index.html#sobre" class="tooltip">SOBRE<span id="descricao-menu-sobre" class="tooltiptext">Informações sobre o curso</span></a></li>
+							<li role="menuitem" aria-describedby="descricao-menu-docentes"><a href="docentes.html" class="tooltip">DOCENTES<span id="descricao-menu-docentes" class="tooltiptext">Docentes do curso</span></a></li>
+							<li role="menuitem" aria-describedby="descricao-menu-eventos"><a href="eventos.html" class="tooltip">EVENTOS<span id="descricao-menu-eventos" class="tooltiptext">Eventos, notícias e atrações</span></a></li>
+							<li role="menuitem" aria-describedby="descricao-menu-contato"><a href="contato.html" class="tooltip">CONTATO<span id="descricao-menu-contato" class="tooltiptext">Formas de contato com a Universidade</span></a></li>
+							<!--<li class="search">
+								<div class="input-group">
+							      <input type="search" placeholder="search">
+							      <span class="input-group-btn">
+							        <button type="button"><i class="fa fa-search"></i></button>
+							      </span>
+							    </div><!-- /input-group --><!--
+							</li>-->
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+
+		<section class="row-container">
+			<div id="column-left" class="column side" style="background-color: #1C1C1C">
+				<div id="static-column">
+				</div>
+			</div>
+
+			<div id="column-middle" class="column middle" style="background-color: #DCDCDC;" align="center">
+				<h1 id="inicio" class="title">DOCENTES E DIRIGENTES</h1>
+
+				<br/>
+
+				<h2 id="sobre" class="subtitle">DOCENTES</h2>
+
+				<p style="opacity: 0.4; text-align: center;">Passe o mouse ou clique para expandir a tabela</p>
+				<div class="div-table-oculta" style="overflow-y: auto;" rules="0" cellspacing="0" cellpadding="0">
+						<table id="table-docentes" class="table-oculta">
+							<tr>
+								<th>
+									<p style="color: #FFF">NOME | NÍVEL</p>
+								</th>
+								<th>
+									<p style="color: #FFF">FORMAÇÃO</p>
+								</th>
+								<th width="120px">
+									<p style="color: #FFF">LATES</p>
+								</th>
+							</tr>
+							<tr>
+								<td>
+									<p>ALEXANDRE DA SILVA MELLO | MESTRE</p>
+								</td>
+								<td>
+									<p>MATEMÁTICO</p>
+								</td>
+								<td>
+									<p><a href="http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4276963P5" target="_blank">LATES</a></p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>JOSÉ EDUARDO FREIRE | DOUTOR</p>
+								</td>
+								<td>
+									<p>ADMINISTRADOR</p>
+								</td>
+								<td>
+									<p><a href="http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4773944J7" target="_blank">LATES</a></p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>PABLO RODRIGO SANCHES | DOUTOR</p>
+								</td>
+								<td>
+									<p>ANALISTA DE SISTEMAS</p>
+								</td>
+								<td>
+									<p><a href="http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4762679D6" target="_blank">LATES</a></p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>ANTONIO ÁLVARES DA COSTA | MESTRE</p>
+								</td>
+								<td>
+									<p>MATEMÁTICO</p>
+								</td>
+								<td>
+									<p><a href="http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4704630P1" target="_blank">LATES</a></p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>LENY FATIMA SALLES PASCHOAL | MESTRE</p>
+								</td>
+								<td>
+									<p>ECONOMISTA</p>
+								</td>
+								<td>
+									<p><a href="http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4749605Y3" target="_blank">LATES</a></p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>RODRIGO DE OLIVEIRA PLOTZE | DOUTOR</p>
+								</td>
+								<td>
+									<p> --- </p>
+								</td>
+								<td>
+									<p> --- </p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>EDILSON CARLOS CARITÁ | DOUTOR</p>
+								</td>
+								<td>
+									<p> --- </p>
+								</td>
+								<td>
+									<p> --- </p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>LUCIANO ALBUQUERQUE L. SARAIVA | MESTRE</p>
+								</td>
+								<td>
+									<p> --- </p>
+								</td>
+								<td>
+									<p> --- </p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>SANDRA REGINA COSTA FANTTINATO | DOUTORA</p>
+								</td>
+								<td>
+									<p> --- </p>
+								</td>
+								<td>
+									<p> --- </p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>FERNANDO MARCOS PEREZ CAMPOS | MESTRE</p>
+								</td>
+								<td>
+									<p>CIENTISTA DA COMPUTAÇÃO</p>
+								</td>
+								<td>
+									<p><a href="http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4778105T4" target="_blank">LATES</a></p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>MILTON FARIA JUNIOR | DOUTOR</p>
+								</td>
+								<td>
+									<p>FÍSICO</p>
+								</td>
+								<td>
+									<p><a href="http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4721194D8" target="_blank">LATES</a></p>
+								</td>
+							</tr>
+						</table>
+						<br/>
+					</div>
+
+				<h2 class="subtitle">DIRIGENTES DA INSTITUIÇÃO</h2>
+
+				<div id="dirigentes-list">
+					<ul>
+						<li>
+							<h3 class="reitora" style="background-image: linear-gradient(to right, #000, #054f77); color: #FFF;">Profª. Elmara Lucia de Oliveira Bonini | Reitora</h3>
+							<br/>
+						</li>
+						<li>
+							<h3>Diretoria de Ensino, Pesquisa e Extensão - DEPE<br/></h3>
+							<div class="paragrafo">
+								<ul style="background-color: #DDDCD8;">
+									<li>
+										<p class="sub">Pesquisa e Pós-Graduação Stricto Sensu<br/></p>
+										<p>Profa. Neide Ap. de Souza Lehfeld</p>
+										<br/>
+									</li>
+									<li>
+										<p class="sub">Graduação e Pós-Graduação Lato Sensu</p>
+										<p>Profa. Sonia Maria Camargo dos Santos</p>
+										<br/>
+									</li>
+									<li>
+										<p class="sub">Extensão</p>
+										<p>Profa. Carmen Silvia Gonçalves Lopes</p>
+										<br/>
+									</li>
+								</ul>
+								<br/>
+							</div>
+						</li>
+						<li>
+							<h3>Diretoria de Assuntos Comunitários e Estudantis - DACE</h3>
+							<div class="paragrafo">
+								<p>Carolina Bonini Ribeiro Porto</p>
+								<br/>
+							</div>
+							<br/>
+						</li>
+						<li>
+							<h3>Diretoria de Projetos Estratégicos - DIPRO</h3>
+							<div class="paragrafo">
+								<p>Vanessa França Bonini Panico</p>
+								<br/>
+							<br/>
+						</li>
+						<li>
+							<h3>Diretoria de Administração e Finanças - DAF</h3>
+							<div class="paragrafo">
+								<p>Alicia Maria Bonini Ribeiro</p>
+								<br/><br/><br/>
+							</div>
+							<br/>
+						</li>
+						<li>
+							<h3>Diretoria do Campus Guarujá</h3>
+							<div class="paragrafo">
+								<p>Profª. Priscilla Maria Bonini Ribeiro</p>
+								<br/>
+							</div>
+							<br/>
+						</li>
+						<li>
+							<h3>Coordenador do Curso</h3>
+							<div class="paragrafo">
+								<p>Prof. Dr. Edilson Carlos Caritá</p>
+								<br/><br/><br/>
+							</div>
+							<br/>
+						</li>
+					</ul>
+				</div>
+				
+				<br/><br/><br/>
+				
+				<hr/>
+				
+				<img src="../layout/img/index/turing.png" alt="Imagem Alan Turing." width="90%" style="float: right;"/>
+			</div>
+
+			<div id="column-right" class="column side" style="background-color: #1C1C1C" align="center">
+			</div>
+		</section>
+		
+		<footer id="footer">
+			<div class="row row-cinza-claro">
+				<div class="container">
+					<div class="row">
+						
+						<div class="text-center" align="center">
+							<img class="logotipo-left" src="../layout/img/index/unaerp_logo_footer_ribeirao.png" alt="informações UNAERP Ribeirão Preto">
+							<img class="logotipo-middle" src="../layout/img/index/eng_software_logo_footer.png" alt="logo Engenharia de Software">
+							<img class="logotipo-right" src="../layout/img/index/unaerp_logo_footer_guaruja.png" alt="Informações UNAERP Guarujá">
+
+							<hr class="row-hr">
+
+							<!--<ul class="footer-list">
+								<li><a href="https://www.facebook.com/universidadeunaerp/" target="_blank"><img class="img-footer-list" src="../layout/img/index/facebook_logo_footer.png" alt="link facebook UNAERP"></a></li>
+								<li><a href="https://www.youtube.com/user/tvunaerp" target="_blank"><img class="img-footer-list" src="../layout/img/index/youtube_logo_footer.png" alt="link canal TV UNAERP youtube"></a></li>
+								<li><a href="https://www.unaerp.br/" target="_blank"><img class="img-footer-list" src="../layout/img/index/unaerp_logo_footer_site.png" alt="link site UNAERP"></a></li>
+								<li><a href="https://github.com/fresh-cappuccino/projeto-integrador" target="_blank"><img class="img-footer-list" src="../layout/img/index/github_logo_footer.png" alt="link código do projeto github"></a></li>
+							</ul>-->
+
+							<a href="https://www.facebook.com/universidadeunaerp/" target="_blank"><img class="img-footer-list-mini" src="../layout/img/index/facebook_logo_footer.png" alt="link facebook UNAERP"></a>
+							<a href="https://www.youtube.com/user/tvunaerp" target="_blank"><img class="img-footer-list-big" src="../layout/img/index/youtube_logo_footer.png" alt="link canal TV UNAERP youtube"></a>
+							<a href="https://www.unaerp.br/" target="_blank"><img class="img-footer-list-big" src="../layout/img/index/unaerp_logo_footer_site.png" alt="link site UNAERP"></a>
+							<a href="https://github.com/fresh-cappuccino/projeto-integrador" target="_blank"><img class="img-footer-list-medium" src="../layout/img/index/github_logo_footer.png" alt="link código do projeto github"></a>
+
+							<hr class="row-hr">
+
+							<div class="container">
+								<p style="color: #FFF">Copyright © Engenharia de Software UNAERP. All rights reserved.</p>
+							</div>
+							<br/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

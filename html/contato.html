@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Engenharia de Software</title>
+		<link rel="stylesheet" href="../layout/css/contato.css">
+		<link rel="icon" type="image/png" href="../layout/img/index/unaerp_icon.png"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+		<style type="text/css">
+			@media (max-width: 780px) {
+				header {
+					background-image: linear-gradient(to right, rgb(44,62,80), rgb(44, 62, 80));
+					width: 100%;
+					height: 365px;
+				}
+				header #logotipo {
+					display: none;
+				}
+				header #logotipo-unaerp {
+					margin-left: 0;
+				}
+				header .cano-header-left {
+					display: none;
+				}
+				.row {
+					justify-content: left;
+					align-items: left;
+				}
+				.container {
+					flex-direction: row;
+					justify-content: left;
+					align-items: left;
+				}
+				#menu ul {
+					width: 100%;
+					margin: 0;
+					position: relative;
+					flex-direction: row;
+					align-content: center;
+					justify-content: center;
+					float: left;
+				}
+				#menu li {
+					margin: 0;
+					background-image: linear-gradient(to right, rgb(44,62,80), lightblue);
+					flex-direction: row;
+					align-content: center;
+					justify-content: center;
+					display: block;
+					opacity: 0.9;
+				}
+				#menu li a {
+					display: -webkit-flex;
+					display: flex;
+					-webkit-flex-wrap: wrap;
+					flex-wrap: wrap;
+					-webkit-align-content: center;
+					align-content: center;
+					font-size: 15px;
+				}
+				/* Standard syntax */
+				@keyframes ani_header {
+					from {/*background-color:red;*/ left:0%;}
+					to {/*background-color:red;*/ left:81%;}
+				}
+				#column-left {
+					background-image: linear-gradient(to left, lightblue, rgb(44, 62, 80));
+				}
+				.column.side, .column.middle {
+					box-shadow: 0 0 0;
+					width: 100%;
+				}
+				.img-container-div {
+					width: 75%;
+					opacity: 1;
+				}
+				.img-container-div:hover {
+					width: 80%;
+				}
+				#column-middle h3 {
+					font-size: 19px;
+				}
+				#column-middle p {
+					font-size: 12px;
+				}
+				.sub {
+					font-size: 7px;
+				}
+				.title {
+					font-size: 25px;
+				}
+				.subtitle {
+					font-size: 20px;
+				}
+				.div-table-oculta {
+					width: 60%;
+				}
+				#dirigentes-list ul {
+					background: #000;
+					padding: 1px;
+				}
+				#dirigentes-list ul li {
+					padding: 2px;
+					margin-left: 1px;
+				}
+				#digirentes-list li:first-child a {
+					height: 21px;
+					line-height: 21px;
+				}
+				#dirigentes-list ul li.sub {
+					font-size: 12px;
+				}
+				.tooltiptext {
+					display: none;
+				}
+				footer {
+					width: 50%;
+				}
+				footer .row {
+					width: 100%;
+				}
+				footer p {
+					font-size: 8px;
+				}
+				footer .logotipo-left, footer .logotipo-middle {
+					width: 25%;
+					margin: 0;
+				}
+				footer .logotipo-right {
+					width: 30%;
+					margin: 0;
+				}
+				footer .logotipo-left {
+					margin-left: 0;
+				}
+				footer .img-footer-list-mini {
+					width: 20%;
+				}
+				footer .img-footer-list-medium {
+					width: 18%;
+				}
+				footer .img-footer-list-big {
+					width: 15%;
+				}
+				footer .img-footer-list-mini {
+					margin-right: 4%;
+					width: 24%;
+				}
+				footer .img-footer-list-medium {
+					width: 21%;
+				}
+				footer .img-footer-list-big {
+					margin-right: 4%;
+					width: 16%;
+				}
+			}
+			body ul{
+				list-style-type: none;
+			}
+			.tooltip {
+				position: relative;
+			}
+			.tooltip .tooltiptext {
+				visibility: hidden;
+				width: 120px;
+				background-color: #363636;
+				color: #FFF;
+				text-align: center;
+				border-radius: 6px;
+				padding: 5px 0;
+
+				/* Position the tooltip */
+				position: absolute;
+				z-index: 1;
+				top: 100%;
+				left: 50%;
+				margin-left: -60px;
+			}
+			.tooltip:hover .tooltiptext {
+				visibility: visible;
+			}
+			.div-estilo {
+				background: #1C1C1C;
+				height: 21px;
+				width: 21%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header>
+			<div class="container">
+				<a href="https://www.unaerp.br/" target="_blank"><img id="logotipo-unaerp" src="../layout/img/index/unaerp_logo.png" alt="Logotipo"/></a>
+				<a href="index.html"><img id="logotipo" src="../layout/img/index/eng_software_logo.png" alt="Logotipo"/></a>
+				<!--<img id="carrinho" src="../layout/img/eng_software_logo.png" alt="Logotipo">
+				<img id="user" src="../layout/img/eng_software_logo.png" alt="Logotipo">-->
+			</div>
+
+			<div class="header-black"><span id="animation-header"><img src="../layout/img/index/gif/doom_1.gif"/></span><img class="img-header" src="../layout/img/index/gif/doom_2.gif"/></div>
+			
+			<div class="container">
+				<div class="row" align="center">
+					<nav id="menu">
+						<ul>
+							<li role="menuitem" aria-describedby="descricao-menu-inicio"><a href="index.html" class="tooltip">INICIO<span id="descricao-menu-inicio" class="tooltiptext">Ir para o index</span></a></li>
+							<li role="menuitem" aria-describedby="descricao-menu-sobre"><a href="index.html#sobre" class="tooltip">SOBRE<span id="descricao-menu-sobre" class="tooltiptext">Informações sobre o curso</span></a></li>
+							<li role="menuitem" aria-describedby="descricao-menu-docentes"><a href="docentes.html" class="tooltip">DOCENTES<span id="descricao-menu-docentes" class="tooltiptext">Docentes do curso</span></a></li>
+							<li role="menuitem" aria-describedby="descricao-menu-eventos"><a href="eventos.html" class="tooltip">EVENTOS<span id="descricao-menu-eventos" class="tooltiptext">Eventos, notícias e atrações</span></a></li>
+							<li role="menuitem" aria-describedby="descricao-menu-contato"><a href="contato.html" class="tooltip">CONTATO<span id="descricao-menu-contato" class="tooltiptext">Formas de contato com a Universidade</span></a></li>
+							<!--<li class="search">
+								<div class="input-group">
+							      <input type="search" placeholder="search">
+							      <span class="input-group-btn">
+							        <button type="button"><i class="fa fa-search"></i></button>
+							      </span>
+							    </div><!-- /input-group --><!--
+							</li>-->
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+
+		<section class="row-container">
+			<div id="column-left" class="column side" style="background-color: #1C1C1C">
+				<div id="static-column">
+				</div>
+			</div>
+
+			<div id="column-middle" class="column middle" style="background-color: #DCDCDC;" align="center">
+				<h1 id="inicio" class="title">CONTATO</h1>
+
+				<br/>
+
+				<h2 class="subtitle">UNAERP</h2>
+
+				<div class="paragrafo">
+					<h3>CAMPUS RIBEIRÃO PRETO</h3>
+
+					<ul>
+						<li>
+							<p style="font-size: 21px;"><em><strong>FONE  </strong>.: 16 3603 7000 | 0800 771 8388</em></p>
+						</li>
+						<li>
+							<p style="font-size: 18px;"><em><strong>HORÁRIO TELEATENDIMENTO</strong></em></p>
+							<ul>
+								<li>
+									<p><em>Segunda à sexta-feira: </em> das 8h às 22h</p>
+								</li>
+								<li>
+									<p><em>Sábados: </em> das 8h às 12h</p>
+								</li>
+							</ul>
+						</li>
+					</ul>
+
+					<br/>
+
+					<h3>CAMPUS GUARUJÁ</h3>
+
+					<ul>
+						<li>
+							<p style="font-size: 21px;"><em><strong>FONE  </strong>.: 13 3398 1000 | 0800 773 7760</em></p>
+						</li>
+						<li>
+							<p style="font-size: 18px;"><em><strong>HORÁRIO TELEATENDIMENTO</strong></em></p>
+							<ul>
+								<li>
+									<p><em>Segunda à sexta-feira: </em> das 8h às 22h</p>
+								</li>
+								<li>
+									<p><em>Sábados: </em> das 9h às 22h</p>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+
+				<br/>
+
+				<h2 class="subtitle">CURSO</h2>
+
+				<div class="paragrafo">
+					<h3>EDILSON | COORDENADOR</h3>
+
+					<ul>
+						<li>
+							<p style="font-size: 21px;"><em><strong>FONE  </strong>.: 16 3603 6778</em></p>
+							<p style="font-size: 21px;"><em><strong>E-MAIL</strong>.: ecarita@unaerp.br</em></p>
+						</li>
+					</ul>
+				</div>
+
+				<br/>
+
+				<h2 class="subtitle">ATENDIMENTO ONLINE</h2>
+
+				<div class="paragrafo">
+					<ul>
+						<li>
+							<a href="https://www3.unaerp.br/Chat/#/identificacao" target="_blank"><p style="font-size: 21px;"><strong><em>CHAT UNAERP</em></strong></p></a>
+						</li>
+					</ul>
+				</div>
+
+				<br/><br/><br/>
+
+				<hr/>
+
+				<img src="../layout/img/index/ada_lovelace.png" alt="Imagem Ada Lovelace" width="90%" />
+			</div>
+
+			<div id="column-right" class="column side" style="background-color: #1C1C1C" align="center">
+			</div>
+		</section>
+		
+		<footer id="footer">
+			<div class="row row-cinza-claro">
+				<div class="container">
+					<div class="row">
+						
+						<div class="text-center" align="center">
+							<img class="logotipo-left" src="../layout/img/index/unaerp_logo_footer_ribeirao.png" alt="informações UNAERP Ribeirão Preto">
+							<img class="logotipo-middle" src="../layout/img/index/eng_software_logo_footer.png" alt="logo Engenharia de Software">
+							<img class="logotipo-right" src="../layout/img/index/unaerp_logo_footer_guaruja.png" alt="Informações UNAERP Guarujá">
+
+							<hr class="row-hr">
+
+							<!--<ul class="footer-list">
+								<li><a href="https://www.facebook.com/universidadeunaerp/" target="_blank"><img class="img-footer-list" src="../layout/img/index/facebook_logo_footer.png" alt="link facebook UNAERP"></a></li>
+								<li><a href="https://www.youtube.com/user/tvunaerp" target="_blank"><img class="img-footer-list" src="../layout/img/index/youtube_logo_footer.png" alt="link canal TV UNAERP youtube"></a></li>
+								<li><a href="https://www.unaerp.br/" target="_blank"><img class="img-footer-list" src="../layout/img/index/unaerp_logo_footer_site.png" alt="link site UNAERP"></a></li>
+								<li><a href="https://github.com/fresh-cappuccino/projeto-integrador" target="_blank"><img class="img-footer-list" src="../layout/img/index/github_logo_footer.png" alt="link código do projeto github"></a></li>
+							</ul>-->
+
+							<a href="https://www.facebook.com/universidadeunaerp/" target="_blank"><img class="img-footer-list-mini" src="../layout/img/index/facebook_logo_footer.png" alt="link facebook UNAERP"></a>
+							<a href="https://www.youtube.com/user/tvunaerp" target="_blank"><img class="img-footer-list-big" src="../layout/img/index/youtube_logo_footer.png" alt="link canal TV UNAERP youtube"></a>
+							<a href="https://www.unaerp.br/" target="_blank"><img class="img-footer-list-big" src="../layout/img/index/unaerp_logo_footer_site.png" alt="link site UNAERP"></a>
+							<a href="https://github.com/fresh-cappuccino/projeto-integrador" target="_blank"><img class="img-footer-list-medium" src="../layout/img/index/github_logo_footer.png" alt="link código do projeto github"></a>
+
+							<hr class="row-hr">
+
+							<div class="container">
+								<p style="color: #FFF">Copyright © Engenharia de Software UNAERP. All rights reserved.</p>
+							</div>
+							<br/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

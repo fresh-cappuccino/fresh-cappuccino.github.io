@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Engenharia de Software</title>
+		<link rel="stylesheet" href="../layout/css/index.css">
+		<link rel="icon" type="image/png" href="../layout/img/index/unaerp_icon.png"/>
+		<script src="../js/jquery/jquery.js"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("a").on('click', function(event) {
+
+					if (this.hash !== "") {
+						event.preventDefault();
+
+						var hash = this.hash;
+
+						$('html, body').animate({
+							scrollTop: $(hash).offset().top
+						}, 800, function(){
+							window.location.hash = hash;
+						});
+					}
+				});
+			});
+		</script>
+		
+		<style type="text/css">
+			@media (max-width: 780px) {
+				header {
+					background-image: linear-gradient(to right, rgb(44,62,80), rgb(44, 62, 80));
+					width: 100%;
+					height: 365px;
+				}
+				header #logotipo {
+					display: none;
+				}
+				header #logotipo-unaerp {
+					margin-left: 0;
+				}
+				header .cano-header-left {
+					display: none;
+				}
+				#menu-lateral-div {
+					display: none;
+				}
+				.row {
+					justify-content: left;
+					align-items: left;
+				}
+				.container {
+					flex-direction: row;
+					justify-content: left;
+					align-items: left;
+				}
+				#menu ul {
+					width: 100%;
+					margin: 0;
+					position: relative;
+					flex-direction: row;
+					align-content: left;
+					justify-content: left;
+					float: left;
+				}
+				#menu li {
+					margin: 0;
+					background-image: linear-gradient(to right, rgb(44,62,80), lightblue);
+					flex-direction: row;
+					align-content: left;
+					justify-content: left;
+					display: block;
+					opacity: 0.9;
+				}
+				#menu li a {
+					display: -webkit-flex;
+					display: flex;
+					-webkit-flex-wrap: wrap;
+					flex-wrap: wrap;
+					-webkit-align-content: center;
+					align-content: center;
+					font-size: 15px;
+				}
+				/* Standard syntax */
+				@keyframes ani_header {
+					from {/*background-color:red;*/ left:0%;}
+					to {/*background-color:red;*/ left:81%;}
+				}
+				#column-left {
+					background-image: linear-gradient(to left, lightblue, rgb(44, 62, 80));
+				}
+				.column.side, .column.middle {
+					box-shadow: 0 0 0;
+					background-color: #000;
+					width: 104%;
+				}
+				.img-container-div {
+					width: 75%;
+					opacity: 1;
+				}
+				.img-container-div:hover {
+					width: 80%;
+				}
+				#column-middle h3 {
+					font-size: 19px;
+				}
+				#column-middle p {
+					font-size: 12px;
+				}
+				.title {
+					font-size: 25px;
+				}
+				.subtitle {
+					font-size: 20px;
+				}
+				.div-table-oculta {
+					width: 60%;
+				}
+				.tooltiptext {
+					display: none;
+				}
+				footer {
+					width: 100%;
+				}
+				footer .row {
+					width: 100%;
+				}
+				footer p {
+					font-size: 8px;
+				}
+				footer .logotipo-left, footer .logotipo-middle {
+					width: 25%;
+					margin: 0;
+				}
+				footer .logotipo-right {
+					width: 30%;
+					margin: 0;
+				}
+				footer .logotipo-left {
+					margin-left: 0;
+				}
+				footer .img-footer-list-mini {
+					margin-right: 4%;
+					width: 24%;
+				}
+				footer .img-footer-list-medium {
+					width: 21%;
+				}
+				footer .img-footer-list-big {
+					margin-right: 4%;
+					width: 16%;
+				}
+			}
+			/*html {
+				scroll-behavior: smooth;
+			}*/
+			body h4 {
+				border-radius: 7px;
+				padding: 7px;
+				color: #000;
+				background-image: linear-gradient(to right, lightgray, white);
+			}
+			/* regra para o box-sizing */
+			*, *:before, *:after {
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+			}
+			.tooltip-bottom {
+				position: relative;
+			}
+			.tooltip-bottom .tooltiptext {
+				visibility: hidden;
+				width: 150px;
+				background-color: #363636;
+				color: #FFF;
+				text-align: center;
+				border-radius: 6px;
+				padding: 5px 0;
+
+				/* Position the tooltip */
+				position: absolute;
+				z-index: 1;
+				top: 100%;
+				left: 50%;
+				margin-left: -60px;
+			}
+			.tooltip-bottom:hover .tooltiptext {
+				visibility: visible;
+			}
+			.tooltip {
+				position: relative;
+			}
+			.tooltip .tooltiptext {
+				visibility: hidden;
+				width: 120px;
+				background-color: #363636;
+				color: #FFF;
+				text-align: center;
+				border-radius: 6px;
+				padding: 5px 0;
+
+				/* Position the tooltip */
+				position: absolute;
+				z-index: 1010;
+				top: -5px;
+				left: 92%;
+			}
+			.tooltip:hover .tooltiptext {
+				visibility: visible;
+			}
+			#menu-lateral-icone {
+				padding:0 50px 0 0;
+				-moz-transition: all 0.5s ease;
+				-webkit-transition: all 0.5s ease;
+				-o-transition: all 0.5s ease;
+				transition: all 0.5s ease;
+				margin-top: 100px;
+				margin-left: 46px;
+			}
+			#static-column {
+				padding:0 50px 0 0;
+				-moz-transition: all 0.5s ease;
+				-webkit-transition: all 0.5s ease;
+				-o-transition: all 0.5s ease;
+				transition: all 0.5s ease;
+				font-size:1.2em;
+				background: rgb(44,62,80);
+				background-image: -moz-linear-gradient(135deg, rgb(3,8,12), rgb(16,57,79));
+				background-image: -webkit-linear-gradient(135deg, rgb(3,8,12), rgb(16,57,79));
+				background-image: -o-linear-gradient(135deg, rgb(3,8,12), rgb(16,57,79) );
+				background-image: -ms-linear-gradient(135deg, rgb(3,8,12), rgb(16,57,79));
+				background-image: linear-gradient(135deg, rgb(3,8,12), rgb(16,57,79));
+				height:100%;
+				overflow:hidden;
+				width:450px; 
+				position:fixed;
+				top:0;
+				left:-400px;
+				z-index: 1000;
+			}
+			#menu-lateral-icone, #static-column:before {
+				z-index:1000;
+				content: "";
+				font-size:4em;
+				color:white;
+				position:fixed;
+				left:4px;
+				top:45px;
+			}
+			#menu-lateral-icone:hover:before, #static-column:hover:before, #lateral:focus:before {
+				left:-500px
+			}
+			#menu-lateral-icone:hover, #static-column:hover, #static-column:focus, #static-column:active {
+				overflow-y:scroll;
+				-moz-transform: translate(400px, 0);
+				-webkit-transform: translate(400px, 0);
+				-o-transform: translate(400px, 0);
+				transform: translate(400px, 0);
+				padding-right:0;
+				background: #1C1C1C;
+				background-image: -moz-linear-gradient(135deg, #000, #333);
+				background-image: -webkit-linear-gradient(135deg, #000, #333);
+				background-image: -o-linear-gradient(135deg, #000, #333);
+				background-image: -ms-linear-gradient(135deg, #000, #333);
+				background-image: linear-gradient(135deg, #000, #333);
+			}
+			#menu-lateral-div:hover #static-column {
+				overflow-y:scroll;
+				-moz-transform: translate(400px, 0);
+				-webkit-transform: translate(400px, 0);
+				-o-transform: translate(400px, 0);
+				transform: translate(400px, 0);
+				padding-right:0;
+				background: #1C1C1C;
+				background-image: -moz-linear-gradient(135deg, #000, #333);
+				background-image: -webkit-linear-gradient(135deg, #000, #333);
+				background-image: -o-linear-gradient(135deg, #000, #333);
+				background-image: -ms-linear-gradient(135deg, #000, #333);
+				background-image: linear-gradient(135deg, #000, #333);
+			}
+			#check {
+				display: none;
+			}
+			#icone {
+				cursor: pointer;
+				padding: 7px;
+				margin-top: 15px;
+				margin-left: 21px;
+				position: absolute;
+				z-index: 1;
+			}
+			#check-visible {
+				cursor: pointer;
+				padding: 7px;
+				z-index: 1;
+			}
+			#check-invisible {
+				display: none;
+			}
+			.imagem-invisivel {
+				visibility: hidden;
+			}
+			#check-invisible:checked ~ .imagem-invisivel {
+				visibility: visible;
+			}
+			.barra {
+				width: 100%;
+			}
+			.menu-lateral {
+				width: 100%;
+				margin-top: 100px;
+			}
+			.imagem-menu-lateral {
+				width: 100%;
+				height: auto;
+			}
+			.link {
+				-webkit-transition: all .4s linear;
+				transition: all .4s linear;
+				opacity: 1;
+			}
+			#check:checked ~ .barra {
+				visibility: hidden;
+			}
+			#check:checked ~ .barra ul .link {
+				opacity: 0;
+				margin-top: 21px;
+				-webkit-transition-delay: .1s;
+				transition-delay: .1s;
+			}
+			#table-grade-curricular {
+				border-collapse: collapse;
+				width: 100%;
+			}
+			#table-grade-curricular:hover td p {
+				opacity: 1;
+				-webkit-transition-delay: 0s;
+				transition-delay: 0s;
+			}
+			#table-grade-curricular td, #table-grade-curricular th {
+				border: 1px solid #ddd;
+				padding: 8px;
+			}
+			#table-grade-curricular tr:nth-child(even){background-color: #f2f2f2;}
+
+			#table-grade-curricular tr:hover { background-color: #A0CAD8; }
+
+			#table-grade-curricular th {
+				padding-top: 12px;
+				padding-bottom: 12px;
+				text-align: left;
+				background-color: #341933;
+				color: white;
+			}
+			div.polaroid {
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				text-align: center;
+			}
+			div.polaroid a {
+				text-decoration: none;
+			}
+			div.video-container {
+				padding: 10px;
+			}
+			.schrodinger:hover ~ .dead { visibility:visible; }
+			.schrodinger:hover ~ .alive {visibility: visible; }
+			.dead, .alive {
+				font-size: 24px;
+				visibility: hidden;
+			}
+			.dead {
+				position: relative;
+				float: left;
+				margin-left: 12px;
+			}
+			.alive {
+				position: relative;
+				float: right;
+				margin-right: 12px;
+			}
+			#column-middle ul {
+				list-style-type: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header>
+			<div class="container">
+				<a href="https://www.unaerp.br/" target="_blank"><img id="logotipo-unaerp" src="../layout/img/index/unaerp_logo.png" alt="Logotipo"/></a>
+				<a href="index.html"><img id="logotipo" src="../layout/img/index/eng_software_logo.png" alt="Logotipo"/></a>
+				<!--<img id="carrinho" src="../layout/img/eng_software_logo.png" alt="Logotipo">
+				<img id="user" src="../layout/img/eng_software_logo.png" alt="Logotipo">-->
+			</div>
+
+			<div class="header-black"><img class="cano-header-left" src="../layout/img/index/cano_mario_left.png"/><span id="animation-header"><img src="../layout/img/index/gif/mario_run.gif"/></span><img class="img-header" src="../layout/img/index/cano_mario.png"/></div>
+			
+			<div class="container">
+				<div class="row" align="center">
+					<nav id="menu">
+						<ul>
+							<li role="menuitem" aria-describedby="descricao-menu-inicio"><a href="index.html" class="tooltip-bottom">INICIO<span id="descricao-menu-inicio" class="tooltiptext">Ir para o index</span></a></li>
+							<li role="menuitem" aria-describedby="descricao-menu-sobre"><a href="#sobre" class="tooltip-bottom">SOBRE<span id="descricao-menu-sobre" class="tooltiptext">Informações sobre o curso</span></a></li>
+							<li role="menuitem" aria-describedby="descricao-menu-docentes"><a href="docentes.html" class="tooltip-bottom">DOCENTES<span id="descricao-menu-docentes" class="tooltiptext">Docentes do curso</span></a></li>
+							<li role="menuitem" aria-describedby="descricao-menu-eventos"><a href="eventos.html" class="tooltip-bottom">EVENTOS<span id="descricao-menu-eventos" class="tooltiptext">Eventos, notícias e atrações</span></a></li>
+							<li role="menuitem" aria-describedby="descricao-menu-contato"><a href="contato.html" class="tooltip-bottom">CONTATO<span id="descricao-menu-contato" class="tooltiptext">Formas de contato com a Universidade</span></a></li>
+							<!--<li class="search">
+								<div class="input-group">
+							      <input type="search" placeholder="search">
+							      <span class="input-group-btn">
+							        <button type="button"><i class="fa fa-search"></i></button>
+							      </span>
+							    </div><!-- /input-group --><!--
+							</li>-->
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+
+		<section class="row-container">
+			<div id="column-left" class="column side" style="background-color: #1C1C1C">
+				<div id="menu-lateral-div">
+					<img id="menu-lateral-icone" src="../layout/img/index/menu_lateral_icone.png" alt="imagem menu lateral"/>
+					<div id="static-column">
+						<div id="animation-img" align="center">
+							<img class="img-container img-container-animation" src="../layout/img/index/gif/wired_mini.gif"/>
+						</div>
+
+						<input type="checkbox" id="check">
+						<label id="icone" for="check" class="tooltip" role="button" aria-describedby="descricao-botao-de-acesso-menu-lateral"><img src="../layout/img/index/ocultar_menu.png"/><span id="descricao-botao-de-acesso-menu-lateral" class="tooltiptext">Clique para ocultar menu</span></label>
+
+						<div class="barra">
+							<br/>
+							<ul class="menu-lateral">
+								<li class="link" role="button" aria-describedby="descricao-menu-lateral-curso"><a href="#inicio" class="tooltip">CURSO<span id="descricao-menu-lateral-curso" class="tooltiptext">Voltar ao início da página</span></a></li>
+								<li class="link" role="button" aria-describedby="descricao-menu-lateral-sobre"><a href="#sobre" class="tooltip">SOBRE<span id="descricao-menu-lateral-sobre" class="tooltiptext">Informações sobre o curso</span></a></li>
+								<li class="link">
+									<ul>
+										<li role="button" aria-describedby="descricao-menu-lateral-perfil"><a href="#perfil" class="tooltip">PERFIL<span id="descricao-menu-lateral-perfil" class="tooltiptext">Perfil do curso</span></a></li>
+										<li role="button" aria-describedby="descricao-menu-lateral-qualidades"><a href="#qualidades" class="tooltip">QUALIDADES<span id="descricao-menu-lateral-qualidades" class="tooltiptext">Qualidades do curso</span></a></li>
+										<li role="button" aria-describedby="descricao-menu-lateral-grade"><a href="#grade-curricular" class="tooltip">GRADE<span id="descricao-menu-lateral-grade" class="tooltiptext">Grade curricular do curso</span></a></li>
+									</ul>
+								</li>
+								<li class="link" role="button" aria-describedby="descricao-menu-lateral-infraestrutura"><a href="#infraestrutura" class="tooltip">INFRAESTRUTURA<span id="descricao-menu-lateral-infraestrutura" class="tooltiptext">Infraestrutura da universidade</span></a></li>
+								<li class="link">
+									<ul>
+										<li role="button" aria-describedby="descricao-menu-lateral-banco"><a href="#banco" class="tooltip">BANCO<span id="descricao-menu-lateral-banco" class="tooltiptext">Informações do Laboratório de Banco de Dados</span></a></li>
+										<li role="button" aria-describedby="descricao-menu-lateral-sistemas"><a href="#sistemas" class="tooltip">SISTEMAS<span id="descricao-menu-lateral-sistemas" class="tooltiptext">Informações do Laboratório de Desenvolvimento de Sistemas</span></a></li>
+										<li role="button" aria-describedby="descricao-menu-lateral-redes"><a href="#redes" class="tooltip">REDES<span id="descricao-menu-lateral-redes" class="tooltiptext">Informções do Laboratório de Redes de Computadores</span></a></li>
+										<li role="button" aria-describedby="descricao-menu-lateral-colaborativos"><a href="#colaborativos" class="tooltip">COLABORATIVOS<span id="descricao-menu-lateral-colaborativos" class="tooltiptext">Informações do Laboratório de Trabalhos Colaborativos</span></a></li>
+										<li role="button" aria-describedby="descricao-menu-lateral-liape"><a href="#liape" class="tooltip">LIAPE<span id="descricao-menu-lateral-liape" class="tooltiptext">Descrição dos Laboratórios de Informática para Atividades de Pesquisa e Ensino</span></a></li>
+									</ul>
+								</li>
+								<li class="link" role="button" aria-describedby="descricao-menu-lateral-mensalidade"><a href="#mensalidade-semestralidade" class="tooltip">MENSALIDADE<span id="descricao-menu-lateral-mensalidade" class="tooltiptext">Informações sobre a mensalidade do curso</span></a></li>
+								<li class="link">
+									<ul>
+										<li role="button" aria-describedby="descricao-menu-lateral-sistema"><a href="#sistema" class="tooltip">SISTEMA<span id="descricao-menu-lateral-sistema" class="tooltiptext">Sistema de pagamento da semestralidade</span></a></li>
+										<li role="button" aria-describedby="descricao-menu-lateral-classificacao"><a href="#classificacao" class="tooltip">CLASSIFICAÇÃO<span id="descricao-menu-lateral-classificacao" class="tooltiptext">Classificação e valor dos créditos da Mensalidade</span></a></li>
+										<li role="button" aria-describedby="descricao-menu-lateral-pagamento"><a href="#pagamento" class="tooltip">PAGAMENTO<span id="descricao-menu-lateral-pagamento" class="tooltiptext">Informações sobre o pagamento</span></a></li>
+										<li role="button" aria-describedby="descricao-menu-lateral-info"><a href="#informacoes" class="tooltip">INFO<span id="descricao-menu-lateral-info" class="tooltiptext">Informações adicionais sobre a mensalidade</span></a></li>
+									</ul>
+								</li>
+								<li class="link" role="button" aria-describedby="descricao-menu-lateral-creditos"><a href="#creditos" class="tooltip">CRÉDITOS<span id="descricao-menu-lateral-creditos" class="tooltiptext">Créditos e Agradecimentos do Site</span></a></li>
+								<li class="link">
+									<ul>
+										<li role="button" aria-describedby="descricao-menu-lateral-criacao"><a href="#criacao" class="tooltip">CRIAÇÃO<span id="descricao-menu-lateral-criacao" class="tooltiptext">Créditos da projetificação e criação do site</span></a></li>
+										<li role="button" aria-describedby="descricao-menu-lateral-codificacao"><a href="#codificacao" class="tooltip">CODIFICAÇÃO<span id="descricao-menu-lateral-codificacao" class="tooltiptext">Créditos da codificação do site</span></a></li>
+										<li role="button" aria-describedby="descricao-menu-lateral-documentacao"><a href="#documentacao" class="tooltip">DOCUMENTAÇÃO<span id="descricao-menu-lateral-documentacao" class="tooltiptext">Créditos da documentação e apresentação do site</span></a></li>
+										<li role="button" aria-describedby="descricao-menu-lateral-wai-aria"><a href="#wai-aria" class="tooltip">WAI-ARIA<span id="descricao-menu-lateral-wai-aria" class="tooltiptext">Créditos da implementação da API WAI-ARIA do site</span></a></li>
+										<li role="button" aria-describedby="descricao-menu-lateral-especial"><a href="#agradecimentos" class="tooltip">AGRADECIMENTOS<span id="descricao-menu-lateral-especial" class="tooltiptext">Agradecimentos especiais à criação deste site</span></a></li>
+									</ul>
+								</li>
+								<li class="link" role="button" aria-describedby="descricao-menu-lateral-info"><a href="#footer" class="tooltip">INFO<span id="descricao-menu-lateral-info" class="tooltiptext">Informações de links e contato</span></a></li>
+								<li class="link" role="button" aria-describedby="descricao-menu-lateral-accessibilidade"><a href="acessibilidade.html" target="_blank" class="tooltip">ACESSIBILIDADE<span id="descricao-menu-lateral-acessibilidade" class="tooltiptext">Descrições sobre acessiblidades implantadas (USERWAY)</span></a></li>
+							</ul>
+						</div>
+
+						<br/>
+
+						<input type="checkbox" id="check-invisible" />
+						<label id="check-visible" for="check-invisible"><img class="imagem-menu-lateral"  src="../layout/img/index/space_invaders_ships.png" alt="imagem naves space invaders"></label>
+						<br/>
+						<div class="imagem-invisivel">
+							<img class="imagem-menu-lateral" src="../layout/img/index/space_invaders_bullets.png" alt="imagem tiros space invaders">
+						</div>
+						<img class="imagem-menu-lateral" src="../layout/img/index/space_invaders_enemies.png" alt="imagem inimigos space invaders">
+						<br/>
+					</div>
+				</div>
+			</div>
+
+			<div id="column-middle" class="column middle" style="background-color: #DCDCDC;" align="center">
+				<h1 id="inicio" class="title" style="margin-bottom: 2px;">ENGENHARIA DE SOFTWARE</h1>
+
+				<div class="img-container-div" for="inicio">
+					<a href="https://www.unaerp.br/vestibular" target="_blank"><img class="img-container" src="../layout/img/index/eng_software_wallpaper.png" alt="imagem turma engenharia de software"></a>
+				</div>
+
+				<div class="paragrafo">
+					<p>
+						Você gosta de tecnologia e entretenimento? Que tal conhecer mais sobre o curso de Engenharia de Software? Sites, jogos digitais, programas, sistemas, inteligência artificial e ciência de dados, <em>IoT</em> e indústria 4.0. Se alguma destas áreas te interessa, esta pode ser a formação ideal para você. Explore este site e descubra tudo sobre o mais novo curso da Universidade de Ribeirão Preto. Enquanto o faz, pegue todas as referências, se puder &#128521;.
+					</p>
+					<p style="font-size: 17px;">
+						-El psy congroo
+					</p>
+					<br/>
+					<p class="p-mini" style="font-size: 13px;">
+						© site criado pelos alunos da 1ª etapa do curso em cumprimento ao projeto integrador, pela disciplina de Programação para Web I
+					</p>
+				</div>
+
+				<h2 id="sobre" class="subtitle">SOBRE O CURSO</h2>
+
+				<div class="paragrafo">
+					<h3 id="perfil">PERFIL</h3>
+
+						<p>O curso de Engenharia de Software da Unaerp forma profissionais com habilidades e competências para atuar no mercado de trabalho de Tecnologia da Informação para desenvolver softwares e programas computacionais, elaborar e testar novos programas, fazer manutenção e atualização em sistemas já implantados, criar aplicativos, games, plataformas digitais para atividades de ensino e sistemas específicos para maximizar o desempenho e a produtividade de uma empresa. O profissional também poderá atuar em empresas públicas ou privadas, na área de inovação, em startups e em grandes empresas de tecnologia da informação. O curso foca na tecnologia da informação como ferramenta para o desenvolvimento de softwares, sistemas web, aplicativos e games e também para a realização de testes e controle de qualidade na produção de software.</p>
+					<br/>
+
+					<h3 id="qualidades">QUALIDADES</h3>
+
+					<p>*Matriz curricular, corpo docente experiente e titulado e infraestrutura moderna garantem uma sólida formação para atendimento ao mercado de trabalho.</p>
+					<p>*Estágio nos Laboratórios de Informática para Atividades de Pesquisa e Ensino (LIAPE) e no Centro de Informática e Tecnologia (CIT) da Universidade.</p>
+					<p>*Convênios de estágios com as principais empresas da cidade e região.</p>
+					<p>*Parcerias acadêmicas com a Oracle (membro do programa Oracle Academy), Microsoft (convênio Imagine) e Associação Brasileira de Melhoria em TI – ABRAMTI (convênio para realização de exames de certificações na área de qualidade de software).</p>
+					<p>*O curso abordará os principais fundamentos da computação com foco na construção, no gerenciamento e na manutenção de softwares.</p>
+					<p>*Convênio com importantes empresas de desenvolvimento de software para alinhamento das tecnologias a serem utilizadas no curso, bem como para recrutamento de talentos.</p>
+					<p>*Mercado de trabalho em expansão com alta empregabilidade.</p>
+				
+					<br/>
+
+					<iframe src="https://www.youtube.com/embed/_E1-cyBRVFs" class="video" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+					<br/><br/>
+
+					<h3 id="grade-curricular">GRADE CURRICULAR</h3>
+				</div>
+				
+				<br/>
+
+				<p style="opacity: 0.4; text-align: center;">Passe o mouse ou clique para expandir a tabela</p>
+				<div style="background-image: url('../layout/img/index/games.png'); background-repeat: no-repeat;">
+					<div class="div-table-oculta" style="overflow-y: auto;" rules="0" cellspacing="0" cellpadding="0">
+						<table id="table-grade-curricular" class="table-oculta">
+							<tr>
+								<th>
+									<p class="th-disciplina" style="color: #FFF">DISCIPLINA</p>
+								</th>
+								<th class="th-horas" width="130px">
+									<p style="color: #FFF">HORAS</p>
+								</th>
+							</tr>
+							<tr>
+								<td>
+									<p>Arquitetura e Organização de Computadores</p>
+								</td>
+								<td>
+									<p>33 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Atividades Complementares</p>
+								</td>
+								<td>
+									<p>100 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Banco de Dados</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Business Intelligence e Big Data</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Cálculo I</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Desenvolvimento de Games I</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Desenvolvimento de Games II</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Empreendedorismo</p>
+								</td>
+								<td>
+									<p>40 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Engenharia de Software I</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Engenharia de Software II</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Estágio Supervisionado I</p>
+								</td>
+								<td>
+									<p>150 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Estágio Supervisionado II</p>
+								</td>
+								<td>
+									<p>150 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Estatística Elementar</p>
+								</td>
+								<td>
+									<p>80 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Estrutura de Dados I</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Estrutura de Dados II</p>
+								</td>
+								<td>
+									<p>33 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Estudos Contemporâneos</p>
+								</td>
+								<td>
+									<p>80 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Ética profissional, legislação e responsabilidade social</p>
+								</td>
+								<td>
+									<p>33 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Framework de Software</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Geometria Analítica e Cálculo Vetorial</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Gestão de Pessoas</p>
+								</td>
+								<td>
+									<p>80 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Gestão de Projetos</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Gestão do Conhecimento</p>
+								</td>
+								<td>
+									<p>80 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Governança da Tecnologia da Informação</p>
+								</td>
+								<td>
+									<p>33 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td >
+									<p>Interação Humano Computador</p>
+								</td>
+								<td>
+									<p>33 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Introdução a Economia</p>
+								</td>
+								<td>
+									<p>40 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Introdução em Gestão Empresarial</p>
+								</td>
+								<td>
+									<p>40 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Laboratório de Banco de Dados</p>
+								</td>
+								<td>
+									<p>33 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Laboratório de Programação I</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Laboratório de Programação II</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Lógica e Criatividade</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Manutenção de Software</p>
+								</td>
+								<td>
+									<p>33 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Matemática Discreta</p>
+								</td>
+								<td>
+									<p>33 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Padrões de Projeto de Software</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Práticas de Leitura, Interpretação e Produção de Texto</p>
+								</td>
+								<td>
+									<p>80 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Programação Mobile I</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Programação Mobile II</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Programação Orientada a Objetos I</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Programação Orientada a Objetos II</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Programação para Web I</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Programação para Web II</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Projeto de Conclusão de Curso I</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Projeto de Conclusão de Curso II</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Qualidade de software</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Redes de Computadores</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Segurança da Informação</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Sistemas Distribuídos</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Sistemas Operacionais</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Teoria da Computação</p>
+								</td>
+								<td>
+									<p>33 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Testes de Software</p>
+								</td>
+								<td>
+									<p>33 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Tópicos Especiais em Engenharia I</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Tópicos Especiais em Engenharia II</p>
+								</td>
+								<td>
+									<p>67 horas</p>
+								</td>
+							</tr>
+						</table>
+						<br/>
+					</div>
+				</div>
+				<br/>
+
+				<h2 id="infraestrutura" class="subtitle">INFRAESTRUTURA</h2>
+				<div class="paragrafo">
+					<p>O curso de Engenharia de Software tem salas exclusivas reservadas no início de cada semestre em função do número de alunos matriculados. As demais salas, quando livres, poderão também atender os alunos desse curso. Existem ainda os seguintes laboratórios:</p>
+				</div>
+
+				<br/>
+
+				<div class="paragrafo">
+					<h3 id="banco">LABORATÓRIO DE BANCO DE DADOS</h3>
+					<br/>
+					<p>Permite o desenvolvimento de aulas práticas e projetos na área de banco de dados com a realização de instalação, configuração e gerenciamento de sistemas gerenciadores de banco de dados. Este laboratório é composto por microcomputadores interligados a sistemas gerenciadores de banco de dados, equipado com quadro branco e tela de projeção.</p>
+					<br/>
+
+					<h3 id="sistemas">LABORATÓIO DE DESENVOLVIMENTO DE SISTEMAS</h3>
+					<br/>
+					<p>Permite o desenvolvimento de aulas práticas e projetos na área de desenvolvimento de sistemas por meio de ferramentas para levantamento de requisitos, análise e implementação de sistemas. Este laboratório é composto por microcomputadores interligados a sistemas gerenciadores de banco de dados, servidores Web, equipado com lousas brancas panorâmicas e tela de projeção.</p>
+					<br>
+
+					<h3 id="redes">LABORATÓRIO DE REDES DE COMPUTADORES</h3>
+					<br/>
+					<p>Permite o desenvolvimento de aulas práticas e projetos de redes de computadores com a realização de trabalhos em instalação e desenvolvimento de software de controle de redes e de manipulação de componentes de hardware e software. Este laboratório é composto por microcomputadores (terminais e servidores) interligados em redes (principal e alternativas) permitindo a experimentação de diversas instalações e configurações de na área de redes de computadores e sistemas distribuídos.</p>
+					<br/>
+
+					<h3 id="colaborativos">LABORATÓRIO DE TRABALHOS COLABORATIVOS</h3>
+					<br/>
+					<p>Atende as disciplinas de lógica, criatividade, inovação e estratégia. Tem por objetivo o desenvolvimento de trabalhos práticos que envolvem trabalhos em grupos e empreendedorismo, permitindo que alunos trabalhem de forma colaborativa. Este Laboratório é composto por mesas redondas, puffs, lousas brancas panorâmicas e tela de projeção.</p>
+					<br/>
+
+					<h3 id="liape">LABORATÓRIO DE INFORMÁTICA PARA ATIVIDADES DE PESQUISA E ENSINO - LIAPE</h3>
+					<br/>
+					<p>Composto por oito salas (01A, 03A, 05A, 06A, 07A, 09A, 13A e 35A) com trinta e seis microcomputadores em cada uma, constantemente renovados com o objetivo de acompanhar a evolução tecnológica em hardware e software. Os computadores estão ligados em rede Internet com taxa de transmissão de 100 Mbits em um espaço físico de 53,70 m2 cada sala, com acesso à portadores de necessidades especiais. As salas são isoladas de ruídos externos e com boa audição interna. Esses laboratórios atendem a todos os cursos da Universidade.</p>
+					<br/>
+				</div>
+
+				<h2 id="mensalidade-semestralidade" class="subtitle">MENSALIDADE / SEMESTRALIDADE</h2>
+
+				<div class="paragrafo">
+					<h3 id="sistema">SISTEMA DE PAGAMENTO DA SEMESTRALIDADE</h3>
+
+					<p>A Unaerp adota o sistema de créditos e sua matrícula é por disciplina para os cursos de Graduação (Bacharelados, Licenciaturas e Tecnologias). Assim, a semestralidade é calculada de acordo com a quantidade de disciplinas - e seus respectivos créditos - que o aluno cursa em cada semestre, sendo que cada disciplina corresponde a um certo número e tipo de crédito. O número de créditos de cada disciplina multiplicado pelo valor do crédito resulta no valor total da semestralidade. Esse valor total é dividido em parcelas mensais, conforme normas contratuais, resultando na mensalidade. Com esse sistema, o aluno pode optar por administrar o número de disciplinas a cursar e, consequentemente, administrar também o valor da mensalidade, de acordo com sua disponibilidade financeira, com exceção da primeira etapa do curso na qual a matrícula deve ser feita na grade completa, vedada a exclusão voluntária de créditos. Também devem ser respeitadas as orientações de pré-requisitos e seriação de conteúdos previstas no projeto pedagógico do seu curso.</p>
+
+					<br/>
+
+					<h3 id="classificacao">CLASSIFICAÇÃO E VALOR DOS CRÉDITOS</h3>
+
+					<p>Os créditos são classificados em quatro tipos diferentes, de acordo com as especificidades da matriz curricular do curso. São os seguintes os tipos de créditos:</p>
+
+					<p><strong>CT</strong> - Crédito Teórico</p>
+					<p><strong>CP</strong> - Crédito Prático</p>
+					<p><strong>CE</strong> - Crédito Específico</p>
+					<p><strong>C EAD</strong> - Crédito EAD</p>
+					<p><em>Obs. O valor de cada tipo de crédito pode ser consultado no Setor Financeiro ou no Setor de Multiatendimento.</em></p>
+
+					<br/>
+
+					<h3 id="pagamento">PAGAMENTO</h3>
+
+					<p>As parcelas mensais são pagas por boletos bancários e vencem no quinto dia útil de cada mês, tendo a possibilidade do desconto pontualidade se pagas até à data de seu vencimento.</p>
+					<p>Parcelas em atraso são acrescidas de juros de 1% ao mês, mais multa moratória de 2%.</p>
+					<p>Os boletos bancários para pagamento são disponibilizados aos alunos por e-mail e também estão disponíveis no link ALUNOS (portal www.unaerp.br) e no Setor Financeiro da Unaerp.</p>
+
+					<br/>
+
+					<h3 id="informacoes">INFORMAÇÕES</h3>
+
+					<p>Esclarecimentos, cálculos, valores e outras informações mais completas sobre mensalidades podem ser obtidos na secretaria dos cursos, no Setor Financeiro ou no Setor de Multiatendimento.</p>
+				</div>
+
+				<h2 id="creditos" class="subtitle">CRÉDITOS E AGRADECIMENTOS</h2>
+
+				<div class="paragrafo">
+					<h3 id="criacao">PROJETIFICAÇÃO E CRIAÇÃO</h3>
+					<ul>
+						<li>
+							<p>Luiz Ricardo Monti Vieira Filho</p>
+						</li>
+						<li>
+							<p>Edson da Silva Leite Júnior</p>
+						</li>
+						<li>
+							<p>Leonardo de Andrade Ferreira</p>
+						</li>
+						<li>
+							<p>Guilherme Carvalho de Faria Reis</p>
+						</li>
+					</ul>
+
+					<br/>
+
+					<h3 id="codificacao">CODIFICAÇÃO</h3>
+					<ul>
+						<li>
+							<p>Leonardo de Andrade Ferreira</p>
+						</li>
+						<li>
+							<p>APOIO:</p>
+							<ul>
+								<li>
+									<p>Edson da Silva Leite Júnior</p>
+								</li>
+								<li>
+									<p>Luiz Ricardo Monti Vieira Filho</p>
+								</li>
+							</ul>
+						</li>
+					</ul>
+
+					<br/>
+
+					<h3 id="documentacao">DOCUMENTAÇÃO E APRESENTAÇÃO</h3>
+					<ul>
+						<li>
+							<p>Edson da Silva Leite Júnior</p>
+						</li>
+						<li>
+							<p>Luiz Ricardo Monti Vieira Filho</p>
+						</li>
+						<li>
+							<p>Guilherme Carvalho de Faria Reis</p>
+						</li>
+					</ul>
+
+					<br/>
+
+					<h3 id="wai-aria">IMPLEMENTAÇÃO API WAI-ARIA</h3>
+					<ul>
+						<li>
+							<p>Leonardo de Andrade Ferreira</p>
+						</li>
+					</ul>
+					<br/>
+					<p>Explanação, objetivos e exemplificação da API WAI-ARIA, por Léonie Watson | Engenheira de Acessibilidade e colaboradora do projeto pela W3C</p>
+
+					<div class="video-container-div">
+						<div class="polaroid">
+							<iframe src="https://www.youtube.com/embed/qdB8SRhqvFc" class="video" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div class="video-container"><p style="font-size: 15px;">ARIA, Accessibility APIs and coding like you give a damn! – Léonie Watson / Front-Trends 2015</p></div>
+						</div>
+					</div>
+					<br/>
+					<div class="video-container-div">
+						<div class="polaroid">
+							<iframe src="https://www.youtube.com/embed/qi0tY60Hd6M" class="video" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div class="video-container"><p style="font-size: 15px;">Leonie Watson - Developer's Guide to Accessibility Mechanics</p></div>
+						</div>
+					</div>
+
+					<br/><br/>
+
+					<h3 id="agradecimentos">AGRADECIMENTOS ESPECIAIS</h3>
+					<ul>
+						<li>
+							<p>Edilson Carlos Caritá - Professor e Coordenador do Curso de Engenharia de Software</p>
+						</li>
+						<li>
+							<p>Alexandre Scchieri Cancian e Laís Caroline Bergamo - Estudantes de Engenharia da Computação na UNAERP - Auxiliadores no planejamento do layout</p>
+						</li>
+					</ul>
+				</div>
+				
+				<br/><br/><br/>
+				
+				<hr/>
+				
+				<br/>
+				
+				<img class="schrodinger" src="../layout/img/index/gato_de_schrodinger.png" alt="image função Java, isDeadOrAlive()" width="60%"/>
+				<h4 class="dead" width="12%">Dead ...</h4>
+				<h4 class="alive" width="12%">And alive!</h4>
+			</div>
+
+			<div id="column-right" class="column side" style="background-color: #DCDCDC" align="center">
+				<h2>COORDENADOR</h2>
+				<p>Prof. Dr. Edilson Carlos Caritá<br/>Fone: (16) 3603-6778<br/>Email: ecarita@unaerp.br</p>
+				
+				<br/>
+				
+				<h2>TITULAÇÃO</h2>
+				<p>Bacharel em Engenharia de Software</p>
+
+				<br/>
+
+				<h2>ÁREA</h2>
+				<p>Ciências Exatas</p>
+
+				<br/>
+
+				<h2>CAMPUS</h2>
+				<p>Ribeirão Preto</p>
+
+				<br/>
+
+				<h2>PERÍODO E DURAÇÃO</h2>
+				<p>Noturno | 4 anos - 3.327 horas</p>
+
+				<br/>
+
+				<h2>HORÁRIO</h2>
+				<p>De segunda a sexta-feira, das 19h às 22h35</p>
+
+				<br/>
+
+				<h2>RECONHECIMENTO</h2>
+				<p>Resolução Consun 007 de 03/08/2017 (Conselho Universitário da Unaerp)</p>
+			</div>
+		</section>
+		
+		<footer id="footer">
+			<div class="row row-cinza-claro">
+				<div class="container">
+					<div class="row">
+						
+						<div class="text-center" align="center">
+							<img class="logotipo-left" src="../layout/img/index/unaerp_logo_footer_ribeirao.png" alt="informações UNAERP Ribeirão Preto">
+							<img class="logotipo-middle" src="../layout/img/index/eng_software_logo_footer.png" alt="logo Engenharia de Software">
+							<img class="logotipo-right" src="../layout/img/index/unaerp_logo_footer_guaruja.png" alt="Informações UNAERP Guarujá">
+
+							<hr class="row-hr">
+
+							<!--<ul class="footer-list">
+								<li><a href="https://www.facebook.com/universidadeunaerp/" target="_blank"><img class="img-footer-list" src="../layout/img/index/facebook_logo_footer.png" alt="link facebook UNAERP"></a></li>
+								<li><a href="https://www.youtube.com/user/tvunaerp" target="_blank"><img class="img-footer-list" src="../layout/img/index/youtube_logo_footer.png" alt="link canal TV UNAERP youtube"></a></li>
+								<li><a href="https://www.unaerp.br/" target="_blank"><img class="img-footer-list" src="../layout/img/index/unaerp_logo_footer_site.png" alt="link site UNAERP"></a></li>
+								<li><a href="https://github.com/fresh-cappuccino/projeto-integrador" target="_blank"><img class="img-footer-list" src="../layout/img/index/github_logo_footer.png" alt="link código do projeto github"></a></li>
+							</ul>-->
+
+							<a href="https://www.facebook.com/universidadeunaerp/" target="_blank"><img class="img-footer-list-mini" src="../layout/img/index/facebook_logo_footer.png" alt="link facebook UNAERP"></a>
+							<a href="https://www.youtube.com/user/tvunaerp" target="_blank"><img class="img-footer-list-big" src="../layout/img/index/youtube_logo_footer.png" alt="link canal TV UNAERP youtube"></a>
+							<a href="https://www.unaerp.br/" target="_blank"><img class="img-footer-list-big" src="../layout/img/index/unaerp_logo_footer_site.png" alt="link site UNAERP"></a>
+							<a href="https://github.com/fresh-cappuccino/projeto-integrador" target="_blank"><img class="img-footer-list-medium" src="../layout/img/index/github_logo_footer.png" alt="link código do projeto github"></a>
+
+							<hr>
+
+							<div class="container">
+								<p style="color: #FFF">Copyright © Engenharia de Software UNAERP. All rights reserved.</p>
+							</div>
+							<br/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>
